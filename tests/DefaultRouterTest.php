@@ -120,4 +120,19 @@ class DefaultRouterTest extends \PHPUnit_Framework_TestCase
         $router->addMatcher('foobar');
         $this->assertEquals(1, count($router->getMatchers()));
     }
+
+    public function test_can_set_factory()
+    {
+        $request = $this->buildRequest();
+
+        $matcher = $this->getMock(Matcher::class);
+        $matcher->expects($this->once())->method('match');
+
+        $factory = $this->getMock(MatcherFactory::class);
+        $factory->expects($this->any())->method('build')->willReturn($matcher);
+
+        $router = new DefaultRouter(['foobar']);
+        $router->setFactory($factory);
+        $router->match($request);
+    }
 }

@@ -37,19 +37,18 @@ class DefaultRouter implements Router
         return $route;
     }
 
-    /**
-     * @param Matcher|callable|string $matcher
-     */
     public function addMatcher($matcher)
     {
         $this->matchers[] = $matcher;
     }
 
-    /**
-     * @return Matcher[]|\callable[]|\string[]
-     */
     public function getMatchers()
     {
         return $this->matchers;
+    }
+
+    public function setFactory(MatcherFactory $factory)
+    {
+        $this->factory = $factory;
     }
 }

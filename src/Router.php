@@ -31,4 +31,11 @@ interface Router
      * @return Matcher[]|\callable[]|\string[]
      */
     public function getMatchers();
+
+    /**
+     * Sets the factory.
+     *
+     * @param MatcherFactory $factory
+     */
+    public function setFactory(MatcherFactory $factory);
 }
