@@ -2,6 +2,7 @@
     "name": "binsoul/net-http-router",
     "description": "Web router implementation for PSR-7 requests",
     "keywords": [
+        "network",
         "http",
         "router"
     ],
@@ -36,8 +37,10 @@
     },
     "scripts": {
         "test": "phpunit",
-        "fix-src": "php-cs-fixer fix -v src",
-        "fix-tests": "php-cs-fixer fix -v tests"
+        "fix-style": [
+            "php-cs-fixer fix src",
+            "php-cs-fixer fix tests"
+        ]
     },
     "extra": {
         "branch-alias": {
