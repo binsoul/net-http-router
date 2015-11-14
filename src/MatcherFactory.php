@@ -14,5 +14,5 @@ interface MatcherFactory
      *
      * @return Matcher
      */
-    public function build($name);
+    public function buildMatcher($name);
 }

@@ -166,7 +166,7 @@ Matchers can be registered either as closures or concrete objects or as strings.
 $router->addMatcher('AccountMatcher');
 $router->setFactory($factory);
 
-// will call $factory->build('AccountMatcher');
+// will call $factory->buildMatcher('AccountMatcher');
 $router->match($request); 
 ```
 

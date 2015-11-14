@@ -26,7 +26,7 @@ trait IncrementalStrategy
                     throw new \RuntimeException(sprintf('No factory available to build matcher "%s".', $matcher));
                 }
 
-                $factory->build($matcher)->match($route);
+                $factory->buildMatcher($matcher)->match($route);
             } else {
                 throw new \RuntimeException(sprintf('Invalid matcher of type "%s".', gettype($matcher)));
             }

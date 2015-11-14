@@ -59,7 +59,7 @@ class DefaultRouterTest extends \PHPUnit_Framework_TestCase
         $matcher->expects($this->once())->method('match');
 
         $factory = $this->getMock(MatcherFactory::class);
-        $factory->expects($this->any())->method('build')->willReturn($matcher);
+        $factory->expects($this->any())->method('buildMatcher')->willReturn($matcher);
 
         $router = new DefaultRouter(['foobar'], $factory);
         $router->match($request);
@@ -129,7 +129,7 @@ class DefaultRouterTest extends \PHPUnit_Framework_TestCase
         $matcher->expects($this->once())->method('match');
 
         $factory = $this->getMock(MatcherFactory::class);
-        $factory->expects($this->any())->method('build')->willReturn($matcher);
+        $factory->expects($this->any())->method('buildMatcher')->willReturn($matcher);
 
         $router = new DefaultRouter(['foobar']);
         $router->setFactory($factory);
