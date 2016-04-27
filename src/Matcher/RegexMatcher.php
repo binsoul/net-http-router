@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace BinSoul\Net\Http\Router\Matcher;
 
 use BinSoul\Net\Http\Router\Matcher;
@@ -41,7 +43,7 @@ class RegexMatcher implements Matcher
      * @param mixed[][] $map
      * @param bool      $allowPartialMatches
      */
-    public function __construct(array $map, $allowPartialMatches = true)
+    public function __construct(array $map, bool $allowPartialMatches = true)
     {
         $this->map = $map;
         $this->allowPartialMatches = $allowPartialMatches;
@@ -59,7 +61,7 @@ class RegexMatcher implements Matcher
      * @param mixed[][] $map
      * @param bool      $allowPartialMatches
      */
-    protected function matchRegularExpressions(Route $route, array $map, $allowPartialMatches)
+    protected function matchRegularExpressions(Route $route, array $map, bool $allowPartialMatches)
     {
         $paths = [];
 

@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace BinSoul\Net\Http\Router;
 
 use Psr\Http\Message\RequestInterface;
@@ -15,7 +17,7 @@ interface Route
      *
      * @return bool
      */
-    public function isFound();
+    public function isFound(): bool;
 
     /**
      * Marks the route as completely resolved.
@@ -36,42 +38,42 @@ interface Route
      * @param string $path
      * @param bool   $canBeLastMatch
      */
-    public function matchPath($path, $canBeLastMatch = true);
+    public function matchPath(string $path, bool $canBeLastMatch = true);
 
     /**
      * Returns the part of the path which has been marked as matched.
      *
      * @return string
      */
-    public function getMatchedPath();
+    public function getMatchedPath(): string;
 
     /**
      * Returns the part of the path which is not resolved yet.
      *
      * @return string
      */
-    public function getMissingPath();
+    public function getMissingPath(): string;
 
     /**
      * Returns the request of the route.
      *
      * @return RequestInterface
      */
-    public function getRequest();
+    public function getRequest(): RequestInterface;
 
     /**
      * Indicates if a response was set.
      *
      * @return bool
      */
-    public function hasResponse();
+    public function hasResponse(): bool;
 
     /**
      * Returns the response.
      *
      * @return ResponseInterface
      */
-    public function getResponse();
+    public function getResponse(): ResponseInterface;
 
     /**
      * Indicates if a parameter exists.
@@ -80,7 +82,7 @@ interface Route
      *
      * @return bool
      */
-    public function hasParameter($key);
+    public function hasParameter(string $key): bool;
 
     /**
      * Returns the value of a parameter.
@@ -92,7 +94,7 @@ interface Route
      *
      * @return mixed
      */
-    public function getParameter($key, $default = null);
+    public function getParameter(string $key, $default = null);
 
     /**
      * Sets the value of a parameter.
@@ -100,12 +102,12 @@ interface Route
      * @param string $key
      * @param mixed  $value
      */
-    public function setParameter($key, $value);
+    public function setParameter(string $key, $value);
 
     /**
      * Returns all parameters as an array indexed by parameter name.
      *
      * @return mixed[]
      */
-    public function getParameters();
+    public function getParameters(): array;
 }

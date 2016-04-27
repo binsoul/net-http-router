@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace BinSoul\Net\Http\Router\Matcher;
 
 use BinSoul\Net\Http\Router\Route;
@@ -102,7 +104,7 @@ class ParameterMatcher extends RegexMatcher
      *
      * @return mixed[]
      */
-    private function parseParameter($string)
+    private function parseParameter(string $string): array
     {
         if (!preg_match('#^'.self::PREFIX.''.self::NAME.''.self::FORMAT.self::OPTIONAL.'$#', $string, $matches)) {
             throw new \InvalidArgumentException(sprintf('Invalid parameter definition "%s" found.', $string));
@@ -143,7 +145,7 @@ class ParameterMatcher extends RegexMatcher
      *
      * @return string
      */
-    private function buildFormatRegex($format, $length)
+    private function buildFormatRegex(string $format, string $length): string
     {
         if (!isset(self::$formats[$format])) {
             throw new \InvalidArgumentException(sprintf('Unknown format "%s" found.', $format));

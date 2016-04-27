@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace BinSoul\Net\Http\Router;
 
 use Psr\Http\Message\RequestInterface;
@@ -16,7 +18,7 @@ interface Router
      *
      * @return Route
      */
-    public function match(RequestInterface $request);
+    public function match(RequestInterface $request): Route;
 
     /**
      * Adds a matcher to the internal list of matchers.
@@ -30,7 +32,7 @@ interface Router
      *
      * @return Matcher[]|\callable[]|\string[]
      */
-    public function getMatchers();
+    public function getMatchers(): array;
 
     /**
      * Sets the factory.

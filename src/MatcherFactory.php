@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace BinSoul\Net\Http\Router;
 
 /**
@@ -14,5 +16,5 @@ interface MatcherFactory
      *
      * @return Matcher
      */
-    public function buildMatcher($name);
+    public function buildMatcher($name): Matcher;
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace BinSoul\Net\Http\Router;
 
 use Psr\Http\Message\RequestInterface;
@@ -28,7 +30,7 @@ class DefaultRouter implements Router
         $this->factory = $factory;
     }
 
-    public function match(RequestInterface $request)
+    public function match(RequestInterface $request): Route
     {
         $route = new DefaultRoute($request);
 
@@ -42,7 +44,7 @@ class DefaultRouter implements Router
         $this->matchers[] = $matcher;
     }
 
-    public function getMatchers()
+    public function getMatchers(): array
     {
         return $this->matchers;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace BinSoul\Net\Http\Router\Matcher;
 
 use BinSoul\Net\Http\Router\IncrementalStrategy;
@@ -24,11 +26,11 @@ class NamespaceMatcher implements Matcher
     /**
      * Constructs an instance of this class.
      *
-     * @param                               $pathPrefix
+     * @param string                        $pathPrefix
      * @param Matcher[]|callable[]|string[] $matchers
      * @param MatcherFactory                $factory
      */
-    public function __construct($pathPrefix, array $matchers = [], MatcherFactory $factory = null)
+    public function __construct(string $pathPrefix, array $matchers = [], MatcherFactory $factory = null)
     {
         $this->matchers = $matchers;
         $this->factory = $factory;

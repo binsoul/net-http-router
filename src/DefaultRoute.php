@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace BinSoul\Net\Http\Router;
 
 use BinSoul\Common\Dictionary;
@@ -37,7 +39,7 @@ class DefaultRoute implements Route
         $this->missingPath = $request->getUri()->getPath();
     }
 
-    public function isFound()
+    public function isFound(): bool
     {
         return $this->isFound;
     }
@@ -48,7 +50,7 @@ class DefaultRoute implements Route
         $this->response = $response;
     }
 
-    public function matchPath($path, $canBeLastMatch = true)
+    public function matchPath(string $path, bool $canBeLastMatch = true)
     {
         $normalizedPath = '/'.trim($path, '/');
         if ($normalizedPath == '/' && trim($this->missingPath, '/') != '') {
@@ -68,7 +70,7 @@ class DefaultRoute implements Route
         }
 
         $missing = substr($this->missingPath, $normalizedPathLength);
-        if ($missing === false) {
+        if ($missing === false || $missing == '') {
             $missing = $canBeLastMatch || $normalizedPath == '/' ? '' : '/';
         } elseif ($missing[0] != '/') {
             throw new \InvalidArgumentException(
@@ -84,47 +86,47 @@ class DefaultRoute implements Route
         $this->missingPath = $missing;
     }
 
-    public function getMatchedPath()
+    public function getMatchedPath(): string
     {
         return $this->matchedPath;
     }
 
-    public function getMissingPath()
+    public function getMissingPath(): string
     {
         return $this->missingPath;
     }
 
-    public function getRequest()
+    public function getRequest(): RequestInterface
     {
         return $this->request;
     }
 
-    public function hasResponse()
+    public function hasResponse(): bool
     {
         return $this->response !== null;
     }
 
-    public function getResponse()
+    public function getResponse(): ResponseInterface
     {
         return $this->response;
     }
 
-    public function hasParameter($key)
+    public function hasParameter(string $key): bool
     {
         return $this->parameters->has($key);
     }
 
-    public function getParameter($key, $default = null)
+    public function getParameter(string $key, $default = null)
     {
         return $this->parameters->get($key, $default);
     }
 
-    public function setParameter($key, $value)
+    public function setParameter(string $key, $value)
     {
         $this->parameters->set($key, $value);
     }
 
-    public function getParameters()
+    public function getParameters(): array
     {
         return $this->parameters->all();
     }
